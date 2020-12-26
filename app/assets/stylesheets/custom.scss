@@ -64,8 +64,24 @@ p {
 }
 
 #logo:hover {
-  color: #fff;
+  color: #aaa;
   text-decoration: none;
+}
+
+header a{  
+  color: #fff;
+  background-color: transparent;
+  font-weight: bold;
+} 
+
+.nav li a:hover{
+  color: #aaa;
+  background-color: transparent;
+}
+
+.nav .open
+{
+  background-color: transparent;
 }
 
 /* デバッグウインドウ */
