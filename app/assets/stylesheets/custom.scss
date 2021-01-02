@@ -37,12 +37,11 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.4em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
 }
 
 p {
@@ -52,20 +51,23 @@ p {
 
 /* ヘッダー */
 
-#logo {
+#header{
+  background-color: teal;
+}
+
+#logo{
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
   font-style: italic;
-  color: #fff;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-}
-
-#logo:hover {
-  color: #aaa;
   text-decoration: none;
+}
+  
+#logo:hover{
+  color: #aaa;
 }
 
 header a{  
@@ -79,11 +81,34 @@ header a{
   background-color: transparent;
 }
 
-.nav .open
+/* ドロップダウン設定*/
+
+#dropdowm-title
 {
+  color: #fff;
   background-color: transparent;
 }
 
+#dropdowm-title:hover
+{
+  color: #aaa;
+}
+
+.dropdown-header
+{
+  color: #666;
+  background-color: #ddd;
+}
+
+/* body設定*/
+
+#body-logo{
+  font-size: 4.5em;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: -1px;
+  padding-top: 9px;
+}
 /* デバッグウインドウ */
 
 .debug_dump {
