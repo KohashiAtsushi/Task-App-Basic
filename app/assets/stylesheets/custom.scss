@@ -109,6 +109,14 @@ header a{
   letter-spacing: -1px;
   padding-top: 9px;
 }
+
+
+/* タスク詳細の設定*/
+#task-show-header th
+{
+  background-color: #eee;
+  text-align: center;
+}
 /* デバッグウインドウ */
 
 .debug_dump {

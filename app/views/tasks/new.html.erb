@@ -1,0 +1,20 @@
+<% provide(:title, 'Sign up') %>
+<h1>タスク新規作成</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @task, url: user_tasks_path, local: true) do |f| %>
+      <%= render 'shared/error_messages' %>
+      
+      <%= f.label :index, class: "label-signup" %>
+      <%= f.text_field :index, class: "form-control" %>
+
+      <%= f.label :contents, class: "label-signup" %>
+      <%= f.text_area :contents, size: "40x5",class: "form-control" %>
+      
+      <%= f.hidden_field :user_id , value: @user.id %>
+      
+      <%= f.submit "新規登録", class: "btn btn-primary btn-signup" %>
+    <% end %>
+  </div>
+</div>

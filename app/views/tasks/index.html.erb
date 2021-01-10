@@ -1,0 +1,33 @@
+<% provide(:title, @user.name) %>
+<div class="col-md-10 col-md-offset-1">
+    
+  <h1><%= @user.name %>のタスク一覧</h1>
+  <div class="col-md-offset-10">
+    <%= link_to "タスク新規作成", new_user_task_path, class: "btn btn-lg btn-primary " %>
+  </div>
+  <!--ここにeach文を入れる---->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= User.human_attribute_name :index %></th>
+            <th><%= User.human_attribute_name :created_at %></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tasks.each do |task| %>
+          <tr>
+            <td><%= link_to task.index , user_task_path(id: task.id) %></td>
+            <td><%= task.created_at %></td>
+            <td>
+              <%= link_to "編集", edit_user_task_path(id: task.id) , class: "btn btn-lg btn-success" %>
+              <%= link_to "削除", user_task_path(id: task.id), method: :delete , class: "btn btn-lg btn-danger" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+  <p></p>
+
+</div>
