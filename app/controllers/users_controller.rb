@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def index
+    @users = User.paginate(page: params[:page], per_page: 20)
+  end
+  
   def show
     @user = User.find(params[:id])
   end
@@ -36,11 +40,12 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    if @task.destroy
+    @user = User.find(params[:id])
+    if @user.destroy
       flash[:success] = '削除に成功しました。'
-      redirect_to user_tasks_url
+      redirect_to users_url
     else
-      render :user_tasks_url
+      render :users_url
     end
   end
   

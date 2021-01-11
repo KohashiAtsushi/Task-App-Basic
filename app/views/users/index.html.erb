@@ -1,0 +1,37 @@
+<% provide(:title, current_user.name) %>
+<div class="col-md-10 col-md-offset-1">
+    
+  <h1>利用者一覧</h1>
+  <%= will_paginate %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= User.human_attribute_name :name %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td id="table-index-middle">
+          <%= link_to user.name , user_path(id: user.id) %>
+          <% if user.admin %>
+            <span class="badge" id="primary-badge">管理者</span>
+          <% else %>
+            <span class="badge" id="success-badge">一般</span>
+          <% end %>
+        </td>
+        <td class="text-right">
+          <% if current_user.admin? && !current_user?(user) %>
+            <%= link_to "削除", user_path(id: user.id), method: :delete ,
+                data: { confirm: "削除してもよろしいですか？"},
+                class: "btn btn-lg btn-danger" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
+  <p></p>
+
+</div>

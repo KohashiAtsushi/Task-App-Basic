@@ -110,12 +110,33 @@ header a{
   padding-top: 9px;
 }
 
+/* テーブル設定*/
+td{
+  font-size: 1.4em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
 
-/* タスク詳細の設定*/
+#table-index-middle{
+  vertical-align: middle;
+}
+
+
+/* ユーザー詳細、タスク詳細の表示設定*/
 #task-show-header th
 {
   background-color: #eee;
   text-align: center;
+}
+/* バッジ設定 */
+
+#primary-badge{
+  background-color: #22a;
+}
+
+#success-badge{
+  background-color: #2a2;
 }
 /* デバッグウインドウ */
 

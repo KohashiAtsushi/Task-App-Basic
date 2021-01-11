@@ -5,7 +5,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "トップ", root_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "利用者一覧", '#' %></li>
+          <li><%= link_to "利用者一覧", users_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdowm-title">
             <%= current_user.name %> <b class="caret"></b>

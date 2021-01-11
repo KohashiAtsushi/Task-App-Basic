@@ -10,24 +10,24 @@
     <thead>
       <tr>
         <th><%= Task.human_attribute_name :index %></th>
-            <th><%= Task.human_attribute_name :created_at %></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @tasks.each do |task| %>
-          <tr>
-            <td><%= link_to task.index , user_task_path(id: task.id) %></td>
-            <td><%= task.created_at %></td>
-            <td>
-              <%= link_to "編集", edit_user_task_path(id: task.id) , class: "btn btn-lg btn-success" %>
-              <%= link_to "削除", user_task_path(id: task.id), method: :delete , class: "btn btn-lg btn-danger" %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+        <th><%= Task.human_attribute_name :created_at %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+      <tr>
+        <td id="table-index-middle"><%= link_to task.index , user_task_path(id: task.id) %></td>
+        <td id="table-index-middle"><%= task.created_at %></td>
+        <td>
+          <%= link_to "編集", edit_user_task_path(id: task.id) , class: "btn btn-lg btn-success" %>
+          <%= link_to "削除", user_task_path(id: task.id), method: :delete ,
+              data: { confirm: "削除してもよろしいですか？"},
+              class: "btn btn-lg btn-danger" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
   <p></p>
 
 </div>
