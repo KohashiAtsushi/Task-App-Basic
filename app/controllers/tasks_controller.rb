@@ -1,6 +1,12 @@
 class TasksController < ApplicationController
-  before_action :get_user
-  before_action :get_task
+  before_action :set_user
+  before_action :set_task
+  
+  ## ログインしていない他人を弾くためのbefore_action
+  before_action :logged_in_user
+  
+  ## ログインしている他人のアクセスを弾くためのbefore_action
+  before_action :correct_user
   
   def new
   end
@@ -46,11 +52,12 @@ class TasksController < ApplicationController
   
   private
     
-  def get_user
+  def set_user
     @user = User.find(params[:user_id])
   end
   
-  def get_task
+  
+  def set_task
     if params[:id]
       @task = Task.find(params[:id])
     else
@@ -60,5 +67,19 @@ class TasksController < ApplicationController
   
   def task_params
     params.require(:task).permit(:index, :contents, :user_id)
+  end
+  
+    
+  def logged_in_user
+    ## logged_in? は sessions_helper内の関数
+    unless logged_in?
+      flash[:danger] = "ログインしてください。"
+      redirect_to login_url
+    end
+  end
+  
+    ## correct = 正しい　の意味。collect は収集
+  def correct_user
+    redirect_to(root_url) unless current_user?(@user)
   end
 end
