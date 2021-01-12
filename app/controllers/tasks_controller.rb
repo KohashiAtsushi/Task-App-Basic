@@ -57,6 +57,7 @@ class TasksController < ApplicationController
       @task = Task.new
     end
   end
+  
   def task_params
     params.require(:task).permit(:index, :contents, :user_id)
   end
