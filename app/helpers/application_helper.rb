@@ -9,7 +9,7 @@ module ApplicationHelper
     end
   end
   
-  def convert_text_to_url(text)
+  def convert_text_to_html_tag(text)
     ## 引数のテキストから、URIを抜き出す。
     ## →URL。ここの場合、リンクが欲しいので、http,https。指定するだけでそのまま指定したものを丸ごと全部抜き出せる
     ## uniqは同じURLがある可能性があり、重複してループするのを避けるために入れている。
@@ -24,6 +24,10 @@ module ApplicationHelper
       ## 文字置き換え。textないのurlを全て置換。これで重複した物も変更される
       text.gsub!(url, sub_text)
     end
+    
+    text.gsub!(/(?:\n\r?|\r\n?)/, '<br>')
+    
     return text
   end
+
 end

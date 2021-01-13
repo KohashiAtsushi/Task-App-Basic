@@ -16,7 +16,7 @@
         <tr>
           <th>詳細</th>
           <!-- ().html_safe はテキストのタグをHTMLで使うのに必要-->
-          <td><%= convert_text_to_url(@task.contents).html_safe %></td>
+          <td><%= convert_text_to_html_tag(@task.contents).html_safe %></td>
         </tr>
         <tr>
           <th>作成日</th>
