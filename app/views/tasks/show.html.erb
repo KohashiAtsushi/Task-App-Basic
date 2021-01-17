@@ -29,6 +29,8 @@
       </tbody>
     </table>              
     <%= link_to "編集", edit_user_task_path(user_id: @user.id,id: @task.id) , class: "btn btn-lg btn-success" %>
-    <%= link_to "削除", user_task_path(user_id: @user.id,id: @task.id), method: :delete , class: "btn btn-lg btn-danger" %>
+    <%= link_to "削除", user_task_path(user_id: @user.id,id: @task.id), method: :delete ,
+                        data: { confirm: @task.index + "削除してもよろしいですか？"},
+                        class: "btn btn-lg btn-danger" %>
   </div>    
 </div>

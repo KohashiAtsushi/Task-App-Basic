@@ -23,7 +23,7 @@
         <td class="text-right">
           <% if current_user.admin? && !current_user?(user) %>
             <%= link_to "削除", user_path(id: user.id), method: :delete ,
-                data: { confirm: "削除してもよろしいですか？"},
+                data: { confirm: user.name + "を削除してもよろしいですか？"},
                 class: "btn btn-lg btn-danger" %>
           <% end %>
         </td>

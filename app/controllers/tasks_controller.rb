@@ -7,6 +7,7 @@ class TasksController < ApplicationController
   
   ## ログインしている他人のアクセスを弾くためのbefore_action
   before_action :correct_user
+  before_action :correct_task, only: [:edit, :update]
   
   def new
   end
@@ -81,5 +82,16 @@ class TasksController < ApplicationController
     ## correct = 正しい　の意味。collect は収集
   def correct_user
     redirect_to(root_url) unless current_user?(@user)
+  end
+
+  def correct_task
+    unless current_user_task?(@user, @task)
+      flash[:danger] = "編集権限がありません。"
+      redirect_to(root_url)
+    end  
+  end
+  
+  def current_user_task?(user, task)
+    user.id == task.user_id
   end
 end

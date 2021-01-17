@@ -21,7 +21,7 @@
         <td>
           <%= link_to "編集", edit_user_task_path(id: task.id) , class: "btn btn-lg btn-success" %>
           <%= link_to "削除", user_task_path(id: task.id), method: :delete ,
-              data: { confirm: task.index + "を削除してもよろしいですか？"},
+              data: { confirm: task.index + "削除してもよろしいですか？"},
               class: "btn btn-lg btn-danger" %>
         </td>
       </tr>

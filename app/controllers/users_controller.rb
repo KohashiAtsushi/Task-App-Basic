@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   ## 管理者かログインしている人かを確認するbefore_action
   before_action :admin_or_correct_user, only: [:edit, :update]
   
+  ## 一般でログインしているときに、ユーザー登録を防ぐbefore_action
+  before_action :logged_make_user, only: [:new] 
+  
   
   before_action :admin_user, only: [:index, :destroy]
   
@@ -71,6 +74,14 @@ class UsersController < ApplicationController
       unless logged_in?
         flash[:danger] = "ログインしてください。"
         redirect_to login_url
+      end
+    end
+    
+    def logged_make_user
+      ## logged_in? は sessions_helper内の関数
+      if logged_in? && !current_user.admin?
+        flash[:danger] = "すでにログインしています。"
+        redirect_to user_path
       end
     end
     
